@@ -10,7 +10,7 @@ const client = new Discord.Client({
 });
 const {token , logkanal , kayıtlırol} = require("./config")
 client.once('ready', () => {
-    console.log('Bot is ready!');
+    console.log('Elit Code!');
 });
 
 client.on('messageCreate', (message) => {
@@ -24,7 +24,7 @@ client.on('messageCreate', (message) => {
 
 
     client.on('messageCreate', (message) => {
-      if (message.content.startsWith('!kayit')) {
+      if (message.content.startsWith('!kayıt')) {
         const args = message.content.split(' ');
         
         if (args.length < 3) {
@@ -35,17 +35,16 @@ client.on('messageCreate', (message) => {
         const kullaniciAdi = args[1];
         const cinsiyet = args[2];
         const yas = args[3];
+        const userID = message.author.id;
 
-        const kayitMesaji = `Kullanıcı Adı: ${kullaniciAdi}\nCinsiyet: ${cinsiyet}\nYaş: ${yas}`;
+        const kayitMesaji = `Kullanıcı Adı: ${kullaniciAdi}\nID:${userID}\nCinsiyet: ${cinsiyet}\nYaş: ${yas}`;
         const channel = message.client.channels.cache.get(logkanal);
         channel.send(`Yeni kayıt geldi!\n${kayitMesaji}`);
       }
     });
-
-
     
     client.on('messageCreate', message => {
-      if (message.content.startsWith('!rolveisim')) {
+      if (message.content.startsWith('!kayıt-et')) {
         const member = message.mentions.members.first();
     
         if (!member) {
